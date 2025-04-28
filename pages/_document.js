@@ -1,9 +1,12 @@
-import { Html, Head, Main, NextScript } from "next/document";
+import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
   return (
-    <Html lang="en">
-      <Head />
+    <Html>
+      <Head>
+        {/* Aqui sim pode adicionar o CSS global */}
+        <link rel="stylesheet" href="/assets/css/main.css" />
+      </Head>
       <body>
         <Main />
         <NextScript />
