@@ -10,8 +10,8 @@ export default function Banner() {
             <p>Universidade Federal de Santa Maria</p>
           </header>
           <p>
-            Formando profissionais capacitados para atuar no desenvolvimento, gestão e inovação em
-            Tecnologia da Informação desde 1990.
+            
+            Tecnologia da Informação since 1990.
           </p>
           <ul className="actions">
             <li>

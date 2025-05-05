@@ -1,25 +1,27 @@
-import { PrismaClient } from '@prisma/client';
-import Noticias from '../components/Noticias'; // Ajuste o caminho conforme seu projeto!
+// pages/noticias.js
+import Noticias from '../components/Noticias';
 
 export async function getServerSideProps() {
-  const prisma = new PrismaClient();
+  const res = await fetch('https://www.ufsm.br/wp-json/wp/v2/eventos?per_page=4&_embed');
+  const rawEventos = await res.json();
 
-  const eventos = await prisma.evento.findMany({
-    orderBy: { data: 'desc' },
-    take: 4,
-  });
+  const eventos = rawEventos.map((evento) => ({
+    id: evento.id,
+    titulo: evento.acf?.evento_nome || 'Título não informado',
+    descricao: evento.acf?.evento_descricao
+      ? evento.acf.evento_descricao.replace(/<[^>]+>/g, '')
+      : 'Descrição não disponível',
+    imagemUrl: evento.acf?.evento_banner?.url || '/images/placeholder.jpg',
+    link: evento.link || '#',
+  }));
 
   return {
     props: {
-      eventos: JSON.parse(JSON.stringify(eventos)),
+      eventos,
     },
   };
 }
 
 export default function NoticiasPage({ eventos }) {
-  return (
-    <div>
-      <Noticias eventos={eventos} />
-    </div>
-  );
+  return <Noticias eventos={eventos} />;
 }
