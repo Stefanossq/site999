@@ -71,8 +71,8 @@ export default function Sidebar() {
                 </ul>
               </li>
               
-              <li><Link href="/estagios" legacyBehavior><a>Estágios</a></Link></li>
-              <li><Link href="/tcc" legacyBehavior><a>TCC</a></Link></li>
+              <li><Link href="https://www.ufsm.br/pet/ciencia-da-computacao/editais/0012024-2024" legacyBehavior><a>Estágios</a></Link></li>
+              <li><Link href="https://repositorio.ufsm.br/handle/1/25131" legacyBehavior><a>TCC</a></Link></li>
             </ul>
           </nav>
 
