@@ -23,7 +23,7 @@ export default function Laboratorios() {
               <section>
                 <header className="main">
                   <h1>Laboratórios</h1>
-                  <p>Conheça os principais laboratórios vinculados ao curso de Sistemas de Informação.</p>
+                  <p>Conheça os principais laboratórios vinculados ao curso de Sistemas de Informação da UFSM.</p>
                 </header>
 
                 {/* NCC */}
@@ -32,19 +32,28 @@ export default function Laboratorios() {
                     <Image
                       src="/images/logo-ncc.png"
                       alt="Logo NCC"
-                      width={130}
-                      height={130}
-                      priority
-                      style={{ objectFit: 'contain' }}
+                      width={100}
+                      height={100}
+                      objectFit="contain"
                     />
                   </div>
-                  <div className="lab-info">
+                  <div className="lab-content">
                     <h2>Núcleo de Computação Científica (NCC)</h2>
                     <p><strong>Salas:</strong> Lab 334, Lab 338</p>
                     <p>
                       O NCC desenvolve atividades voltadas à computação científica e projetos interdisciplinares na UFSM.
                       Saiba mais em: <a href="http://ncc.inf.ufsm.br/laboratorios-de-ensino-ncc/" target="_blank" rel="noopener noreferrer">ncc.inf.ufsm.br</a>
                     </p>
+                    <div className="lab-image-wrapper">
+                      <Image
+                        src="/images/338-4-768x432.jpg"
+                        alt="Foto do Lab 338"
+                        layout="responsive"
+                        width={768}
+                        height={432}
+                        className="lab-photo"
+                      />
+                    </div>
                   </div>
                 </div>
 
@@ -54,19 +63,28 @@ export default function Laboratorios() {
                     <Image
                       src="/images/sub-logo.png"
                       alt="Logo UTI-CT"
-                      width={130}
-                      height={130}
-                      priority
-                      style={{ objectFit: 'contain' }}
+                      width={100}
+                      height={100}
+                      objectFit="contain"
                     />
                   </div>
-                  <div className="lab-info">
+                  <div className="lab-content">
                     <h2>Unidade de Tecnologia da Informação (UTI-CT)</h2>
                     <p><strong>Salas:</strong> Lab 215, Lab 301, Lab 354, Lab 361</p>
                     <p>
                       A UTI-CT é responsável por infraestrutura e suporte tecnológico do CT e também oferece laboratórios para atividades acadêmicas.
                       Saiba mais em: <a href="https://www.ufsm.br/unidades-universitarias/ct/unidade-de-tecnologia-da-informacao" target="_blank" rel="noopener noreferrer">ufsm.br</a>
                     </p>
+                    <div className="lab-image-wrapper">
+                      <Image
+                        src="/images/361-3-768x432.jpg"
+                        alt="Foto do Lab 361"
+                        layout="responsive"
+                        width={768}
+                        height={432}
+                        className="lab-photo"
+                      />
+                    </div>
                   </div>
                 </div>
               </section>
@@ -79,31 +97,41 @@ export default function Laboratorios() {
         .lab-card {
           display: flex;
           flex-direction: row;
-          align-items: center;
-          background: #f8f8f8;
-          border-radius: 16px;
+          align-items: flex-start;
+          background: #f9f9f9;
+          border-radius: 12px;
           padding: 2rem;
-          margin-bottom: 2rem;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+          margin-bottom: 3rem;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+          gap: 1.5rem;
         }
 
         .lab-logo {
           flex-shrink: 0;
-          margin-right: 2rem;
           background: white;
           padding: 1rem;
           border-radius: 12px;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
-        .lab-info h2 {
+        .lab-content {
+          flex-grow: 1;
+        }
+
+        .lab-content h2 {
           margin-top: 0;
           font-size: 1.75rem;
         }
 
-        .lab-info p {
+        .lab-content p {
           margin: 0.5rem 0;
-          line-height: 1.6;
+        }
+
+        .lab-image-wrapper {
+          margin-top: 1rem;
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.08);
         }
 
         a {
@@ -118,8 +146,11 @@ export default function Laboratorios() {
           }
 
           .lab-logo {
-            margin-right: 0;
             margin-bottom: 1rem;
+          }
+
+          .lab-content {
+            width: 100%;
           }
         }
       `}</style>
