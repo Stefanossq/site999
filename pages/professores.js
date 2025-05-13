@@ -4,38 +4,42 @@ import Sidebar from '../components/Sidebar';
 
 // Componente SVG para o ícone do professor
 const ProfessorIcon = () => (
-  <svg width="150" height="150" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="12" cy="7" r="5" stroke="#333" strokeWidth="2"/>
-    <path d="M17 14H7C4.79086 14 3 15.7909 3 18V22H21V18C21 15.7909 19.2091 14 17 14Z" stroke="#333" strokeWidth="2"/>
-    <path d="M12 14V22" stroke="#333" strokeWidth="2"/>
+  <svg width="100" height="100" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="12" cy="7" r="5" stroke="#666" strokeWidth="1.5"/>
+    <path d="M17 14H7C4.79086 14 3 15.7909 3 18V22H21V18C21 15.7909 19.2091 14 17 14Z" stroke="#666" strokeWidth="1.5"/>
+    <path d="M12 14V22" stroke="#666" strokeWidth="1.5"/>
   </svg>
 );
 
 export default function Professores() {
-  // Dados dos professores
-  const professores = [
-    {
-      id: 1,
-      nome: "Dr. C charpas Silva",
-      area: "Banco de Dados",
-      email: "joao.silva@ufsm.br",
-      lattes: "http://lattes.cnpq.br/123456"
-    },
-    {
-      id: 2,
-      nome: "Dra. Ruby Oliveira",
-      area: "Inteligência Artificial",
-      email: "maria.oliveira@ufsm.br",
-      lattes: "http://lattes.cnpq.br/654321"
-    },
-    {
-      id: 3,
-      nome: "Dr. JavaScript Santos",
-      area: "Desenvolvimento Web",
-      email: "1234@ufsm.br",
-      lattes: "http://lattes.cnpq.br/987654"
-    }
-  ];
+  // Dados do Departamento de Computação Aplicada (DCOM)
+  const dcom = {
+    nome: "DEPARTAMENTO DE COMPUTAÇÃO APLICADA (DCOM)",
+    endereco: "Roraima nº 1000, Prédio 07, Sala 119",
+    secretariaContato: "55 32208418",
+    email: "sid.ct@ufsm.br",
+    equipe: [
+      { funcao: "Chefia", nome: "Daniel Welfer" },
+      { funcao: "Chefia Substituta", nome: "Roseclea Duarte Medina" },
+      { funcao: "Secretário(a)", nome: "Tatiane Fernanda Gomes" },
+      { funcao: "Secretário(a) Substituto(a)", nome: "Tania Maria Di Fante Pendeza" }
+    ],
+    docentes: [
+      { nome: "Carlos Raniery Paula dos Santos", titulacao: "Doutorado", jornada: "DE" },
+      { nome: "Cesar Tadeu Pozzer", titulacao: "Doutorado", jornada: "DE" },
+      { nome: "Daniel Welfer", titulacao: "Doutorado", jornada: "DE" },
+      { nome: "Felipe Martins Muller", titulacao: "Doutorado", jornada: "DE" },
+      { nome: "Giliane Bernardi", titulacao: "Doutorado", jornada: "DE" },
+      { nome: "Joaquim Vinicius Carvalho Assunção", titulacao: "Doutorado", jornada: "DE" },
+      { nome: "Jonas Bulegon Gassen", titulacao: "Doutorado", jornada: "DE" },
+      { nome: "Lisandra Manzoni Fontoura", titulacao: "Doutorado", jornada: "DE" },
+      { nome: "Luis Alvaro de Lima Silva", titulacao: "Doutorado", jornada: "DE" },
+      { nome: "Marcos Cordeiro D'Ornellas", titulacao: "Doutorado", jornada: "DE" },
+      { nome: "Raul Ceretta Nunes", titulacao: "Doutorado", jornada: "DE" },
+      { nome: "Roseclea Duarte Medina", titulacao: "Doutorado", jornada: "DE" },
+      { nome: "Thiago Lopes Trugillo da Silveira", titulacao: "Doutorado", jornada: "DE" }
+    ]
+  };
 
   return (
     <>
@@ -55,63 +59,37 @@ export default function Professores() {
               
               <section>
                 <header className="main">
-                  <h1>Corpo Docente</h1>
+                  <h1>{dcom.nome}</h1>
                 </header>
 
                 <div className="image main">
-                  <svg width="100%" height="400" viewBox="0 0 1200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="1200" height="400" fill="#f5f5f5"/>
-                    <text x="50%" y="50%" textAnchor="middle" fill="#333" fontSize="48" fontFamily="Arial">
-                      Professores do Curso de SI
-                    </text>
-                  </svg>
+                  <img src="/images/dcom-image.jpg" alt="Departamento de Computação Aplicada" />
                 </div>
 
-                <p>Corpo docente do curso de Sistemas de Informação.</p>
-                
+                <p><strong>Endereço:</strong> {dcom.endereco}</p>
+                <p><strong>Secretaria:</strong> {dcom.secretariaContato}</p>
+                <p><strong>E-mail:</strong> <a href={`mailto:${dcom.email}`}>{dcom.email}</a></p>
+
                 <hr className="major" />
 
-                <h2>Professores Efetivos</h2>
-                
-                <div className="professores-grid">
-                  {professores.map(professor => (
-                    <div key={professor.id} className="professor-card">
-                      <div className="professor-icon">
-                        <ProfessorIcon />
-                      </div>
-                      <div className="professor-info">
-                        <h3>{professor.nome}</h3>
-                        <p><strong>Área:</strong> {professor.area}</p>
-                        <p>
-                          <strong>Email:</strong> 
-                          <a href={`mailto:${professor.email}`}> {professor.email}</a>
-                        </p>
-                        <p>
-                          <strong>Lattes:</strong> 
-                          <a href={professor.lattes} target="_blank" rel="noopener noreferrer"> Ver currículo</a>
-                        </p>
-                      </div>
+                <h2>Equipe</h2>
+                <div className="equipe">
+                  {dcom.equipe.map((membro, index) => (
+                    <div key={index} className="membro-equipe">
+                      <ProfessorIcon />
+                      <p><strong>{membro.funcao}:</strong> {membro.nome}</p>
                     </div>
                   ))}
                 </div>
 
                 <hr className="major" />
 
-                <h2>Professores Colaboradores</h2>
-                <div className="professores-grid">
-                  {[1, 2, 3].map((_, i) => (
-                    <div key={i} className="professor-card">
-                      <div className="professor-icon">
-                        <svg width="150" height="150" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <circle cx="12" cy="7" r="5" stroke="#666" strokeWidth="1.5"/>
-                          <path d="M17 14H7C4.79086 14 3 15.7909 3 18V22H21V18C21 15.7909 19.2091 14 17 14Z" stroke="#666" strokeWidth="1.5"/>
-                        </svg>
-                      </div>
-                      <div className="professor-info">
-                        <h3>Professor Colaborador {i+1}</h3>
-                        <p><strong>Área:</strong> Especialização</p>
-                        <p><strong>Contato:</strong> colaborador{i+1}@ufsm.br</p>
-                      </div>
+                <h2>Docentes</h2>
+                <div className="docentes">
+                  {dcom.docentes.map((docente, index) => (
+                    <div key={index} className="docente">
+                      <ProfessorIcon />
+                      <p><strong>{docente.nome}</strong> - {docente.titulacao} - {docente.jornada}</p>
                     </div>
                   ))}
                 </div>
@@ -122,44 +100,60 @@ export default function Professores() {
       </div>
 
       <style jsx>{`
-        .professores-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-          gap: 2rem;
-          margin: 2rem 0;
-        }
-        
-        .professor-card {
-          display: flex;
-          background: #f8f8f8;
+        .image.main img {
+          width: 100%;
+          max-height: 400px;
+          object-fit: cover;
+          margin-bottom: 20px;
           border-radius: 8px;
-          overflow: hidden;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-          padding: 1rem;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        section {
+          padding: 2rem;
+        }
+
+        h1 {
+          font-size: 2.5rem;
+          color: #333;
+          margin-bottom: 1rem;
+        }
+
+        .equipe, .docentes {
+          margin-top: 20px;
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 20px;
+        }
+
+        .membro-equipe, .docente {
+          background: #f9f9f9;
+          padding: 20px;
+          border-radius: 8px;
+          display: flex;
           align-items: center;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
         }
-        
-        .professor-icon {
-          width: 80px;
-          height: 80px;
-          margin-right: 1rem;
-          flex-shrink: 0;
+
+        .membro-equipe svg, .docente svg {
+          width: 60px;
+          height: 60px;
+          margin-right: 20px;
+          fill: #666;
         }
-        
-        .professor-info {
-          flex-grow: 1;
+
+        .membro-equipe p, .docente p {
+          font-size: 1rem;
+          color: #555;
         }
-        
-        @media (max-width: 600px) {
-          .professor-card {
-            flex-direction: column;
-            text-align: center;
-          }
-          
-          .professor-icon {
-            margin-right: 0;
-            margin-bottom: 1rem;
-          }
+
+        .docente strong, .membro-equipe strong {
+          color: #333;
+        }
+
+        hr.major {
+          border-top: 2px solid #eee;
+          margin: 2rem 0;
         }
       `}</style>
     </>
