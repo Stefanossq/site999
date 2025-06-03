@@ -103,8 +103,7 @@ export default function TCCPage() {
         <section style={{ marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid #ddd' }}>
           <h2>Submissão de Propostas</h2>
           <p>
-            Em breve, alunos poderão submeter suas propostas de TCC por aqui.
-            Professores também poderão aprovar e gerenciar orientações.
+            Não implementado ainda. 
           </p>
         </section>
       </main>
