@@ -1,18 +1,45 @@
+// components/Sidebar.js
 import { useState } from 'react';
 import Link from 'next/link';
 
 export default function Sidebar() {
   const [sidebarVisible, setSidebarVisible] = useState(true);
-  const [recursosAberto, setRecursosAberto] = useState(false);
+  const [submenuOpen, setSubmenuOpen] = useState({});
 
   const toggleSidebar = () => {
     setSidebarVisible(!sidebarVisible);
   };
 
+  const menuItems = [
+    { label: 'Início', href: '/' },
+    { label: 'Grade Curricular', href: '/grade' },
+    { label: 'Corpo Docente', href: '/professores' },
+    {
+      label: 'Recursos',
+      submenu: [
+        { label: 'Laboratórios', href: '/laboratorios' },
+        { label: 'Biblioteca', href: '/biblioteca' },
+        { label: 'Editais', href: '/editais' },
+      ],
+    },
+    {
+      label: 'Estágios',
+      href: 'https://www.ufsm.br/pet/ciencia-da-computacao/editais/0012024-2024',
+      external: true,
+    },
+    {
+      label: 'TCC',
+      href: '/tcc',
+    },
+  ];
+
+  const toggleSubmenu = (label) => {
+    setSubmenuOpen((prev) => ({ ...prev, [label]: !prev[label] }));
+  };
+
   return (
     <>
-      {/* Botão de toggle - pode ser posicionado onde você quiser */}
-      <button 
+      <button
         onClick={toggleSidebar}
         className="sidebar-toggle"
         style={{
@@ -20,29 +47,29 @@ export default function Sidebar() {
           left: sidebarVisible ? '300px' : '0',
           top: '20px',
           zIndex: 1001,
-          transition: 'left 0.3s ease'
+          transition: 'left 0.3s ease',
         }}
       >
         {sidebarVisible ? '◄' : '►'}
       </button>
 
-      <div 
-        id="sidebar" 
+      <div
+        id="sidebar"
         className="original-style"
         style={{
           width: sidebarVisible ? '300px' : '0',
           overflow: 'hidden',
-          transition: 'width 0.3s ease'
+          transition: 'width 0.3s ease',
         }}
-      > 
+      >
         <div className="inner">
           <section id="search" className="alt">
             <form method="post" action="#">
-              <input 
-                type="text" 
-                name="query" 
-                id="query" 
-                placeholder="Buscar..." 
+              <input
+                type="text"
+                name="query"
+                id="query"
+                placeholder="Buscar..."
               />
             </form>
           </section>
@@ -52,27 +79,37 @@ export default function Sidebar() {
               <h2>Menu</h2>
             </header>
             <ul>
-              <li><Link href="/" legacyBehavior><a>Início</a></Link></li>
-              <li><Link href="/grade" legacyBehavior><a>Grade Curricular</a></Link></li>
-              <li><Link href="/professores" legacyBehavior><a>Corpo Docente</a></Link></li>
-              
-              <li className={recursosAberto ? 'active' : ''}>
-                <span 
-                  className="opener"
-                  onClick={() => setRecursosAberto(!recursosAberto)}
-                  style={{ cursor: 'pointer' }}
+              {menuItems.map((item, index) => (
+                <li
+                  key={index}
+                  className={item.submenu && submenuOpen[item.label] ? 'active' : ''}
                 >
-                  Recursos
-                </span>
-                <ul style={{ display: recursosAberto ? 'block' : 'none' }}>
-                  <li><Link href="/laboratorios" legacyBehavior><a>Laboratórios</a></Link></li>
-                  <li><Link href="/biblioteca" legacyBehavior><a>Biblioteca</a></Link></li>
-                  <li><Link href="/editais" legacyBehavior><a>Editais</a></Link></li>
-                </ul>
-              </li>
-              
-              <li><Link href="https://www.ufsm.br/pet/ciencia-da-computacao/editais/0012024-2024" legacyBehavior><a>Estágios</a></Link></li>
-              <li><Link href="https://repositorio.ufsm.br/handle/1/25131" legacyBehavior><a>TCC</a></Link></li>
+                  {item.submenu ? (
+                    <>
+                      <span
+                        className="opener"
+                        onClick={() => toggleSubmenu(item.label)}
+                        style={{ cursor: 'pointer' }}
+                      >
+                        {item.label}
+                      </span>
+                      <ul style={{ display: submenuOpen[item.label] ? 'block' : 'none' }}>
+                        {item.submenu.map((sub, subIndex) => (
+                          <li key={subIndex}>
+                            <Link href={sub.href}>{sub.label}</Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  ) : item.external ? (
+                    <a href={item.href} target="_blank" rel="noopener noreferrer">
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link href={item.href}>{item.label}</Link>
+                  )}
+                </li>
+              ))}
             </ul>
           </nav>
 
@@ -85,11 +122,10 @@ export default function Sidebar() {
               <li className="icon solid fa-envelope">
                 <a href="mailto:coordsi@ufsm.br">coordsi@ufsm.br</a>
               </li>
-              <li className="icon solid fa-phone">
-                (55) 3220-8000
-              </li>
+              <li className="icon solid fa-phone">(55) 3220-8000</li>
               <li className="icon solid fa-home">
-                Av. Roraima, 1000 - Prédio 7<br />
+                Av. Roraima, 1000 - Prédio 7
+                <br />
                 Santa Maria, RS
               </li>
             </ul>
