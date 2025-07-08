@@ -2,14 +2,6 @@ import Head from 'next/head';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 
-// Componente SVG para o ícone do professor
-const ProfessorIcon = () => (
-  <svg width="100" height="100" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="12" cy="7" r="5" stroke="#666" strokeWidth="1.5"/>
-    <path d="M17 14H7C4.79086 14 3 15.7909 3 18V22H21V18C21 15.7909 19.2091 14 17 14Z" stroke="#666" strokeWidth="1.5"/>
-    <path d="M12 14V22" stroke="#666" strokeWidth="1.5"/>
-  </svg>
-);
 
 export default function Professores() {
   // Dados do Departamento de Computação Aplicada (DCOM)
@@ -19,25 +11,41 @@ export default function Professores() {
     secretariaContato: "55 32208418",
     email: "sid.ct@ufsm.br",
     equipe: [
-      { funcao: "Chefia", nome: "Daniel Welfer" },
-      { funcao: "Chefia Substituta", nome: "Roseclea Duarte Medina" },
-      { funcao: "Secretário(a)", nome: "Tatiane Fernanda Gomes" },
-      { funcao: "Secretário(a) Substituto(a)", nome: "Tania Maria Di Fante Pendeza" }
+      { 
+        funcao: "Chefia", 
+        nome: "Daniel Welfer",
+        imagem: "/images/professores/daniel-welfer.jpg" 
+      },
+      { 
+        funcao: "Chefia Substituta", 
+        nome: "Roseclea Duarte Medina",
+        imagem: "/images/professores/roseclea-duarte-medina.jpg" 
+      },
+      { 
+        funcao: "Secretário(a)", 
+        nome: "Tatiane Fernanda Gomes",
+        imagem: "/images/professores/tatiane-gomes.jpg" 
+      },
+      { 
+        funcao: "Secretário(a) Substituto(a)", 
+        nome: "Tania Maria Di Fante Pendeza",
+        imagem: "/images/professores/tania-pendeza.jpg" 
+      }
     ],
     docentes: [
-      { nome: "Carlos Raniery Paula dos Santos", titulacao: "Doutorado", jornada: "DE" },
-      { nome: "Cesar Tadeu Pozzer", titulacao: "Doutorado", jornada: "DE" },
-      { nome: "Daniel Welfer", titulacao: "Doutorado", jornada: "DE" },
-      { nome: "Felipe Martins Muller", titulacao: "Doutorado", jornada: "DE" },
-      { nome: "Giliane Bernardi", titulacao: "Doutorado", jornada: "DE" },
-      { nome: "Joaquim Vinicius Carvalho Assunção", titulacao: "Doutorado", jornada: "DE" },
-      { nome: "Jonas Bulegon Gassen", titulacao: "Doutorado", jornada: "DE" },
-      { nome: "Lisandra Manzoni Fontoura", titulacao: "Doutorado", jornada: "DE" },
-      { nome: "Luis Alvaro de Lima Silva", titulacao: "Doutorado", jornada: "DE" },
-      { nome: "Marcos Cordeiro D'Ornellas", titulacao: "Doutorado", jornada: "DE" },
-      { nome: "Raul Ceretta Nunes", titulacao: "Doutorado", jornada: "DE" },
-      { nome: "Roseclea Duarte Medina", titulacao: "Doutorado", jornada: "DE" },
-      { nome: "Thiago Lopes Trugillo da Silveira", titulacao: "Doutorado", jornada: "DE" }
+      { nome: "Carlos Raniery Paula dos Santos", titulacao: "Doutorado", jornada: "DE", imagem: "/images/professores/carlos-raniery-paula-dos-santos.jpg" },
+      { nome: "Cesar Tadeu Pozzer", titulacao: "Doutorado", jornada: "DE", imagem: "/images/professores/cesar-tadeu-pozzer.jpg" },
+      { nome: "Daniel Welfer", titulacao: "Doutorado", jornada: "DE", imagem: "/images/professores/daniel-welfer.jpg" },
+      { nome: "Felipe Martins Muller", titulacao: "Doutorado", jornada: "DE", imagem: "/images/professores/felipe-muller.jpg" },
+      { nome: "Giliane Bernardi", titulacao: "Doutorado", jornada: "DE", imagem: "/images/professores/giliane-bernardi.jpg" },
+      { nome: "Joaquim Vinicius Carvalho Assunção", titulacao: "Doutorado", jornada: "DE", imagem: "/images/professores/joaquim-vinicius-assuncao.jpg" },
+      { nome: "Jonas Bulegon Gassen", titulacao: "Doutorado", jornada: "DE", imagem: "/images/professores/jonas-bulegon-gassen.jpg" },
+      { nome: "Lisandra Manzoni Fontoura", titulacao: "Doutorado", jornada: "DE", imagem: "/images/professores/lisandra-fontoura.jpg" },
+      { nome: "Luis Alvaro de Lima Silva", titulacao: "Doutorado", jornada: "DE", imagem: "/images/professores/luis-alvaro-de-lima-silva.jpg" },
+      { nome: "Marcos Cordeiro D'Ornellas", titulacao: "Doutorado", jornada: "DE", imagem: "/images/professores/marcos-cordeiro-dornellas.jpg" },
+      { nome: "Raul Ceretta Nunes", titulacao: "Doutorado", jornada: "DE", imagem: "/images/professores/raul-ceretta.jpg" },
+      { nome: "Roseclea Duarte Medina", titulacao: "Doutorado", jornada: "DE", imagem: "/images/professores/roseclea-duarte-medina.jpg" },
+      { nome: "Thiago Lopes Trugillo da Silveira", titulacao: "Doutorado", jornada: "DE", imagem: "/images/professores/thiago-trugillo.jpg" }
     ]
   };
 
@@ -76,8 +84,21 @@ export default function Professores() {
                 <div className="equipe">
                   {dcom.equipe.map((membro, index) => (
                     <div key={index} className="membro-equipe">
-                      <ProfessorIcon />
-                      <p><strong>{membro.funcao}:</strong> {membro.nome}</p>
+                      <div className="avatar-container">
+                        <img 
+                          src={membro.imagem} 
+                          alt={membro.nome}
+                          className="avatar"
+                          onError={(e) => {
+                            e.target.onerror = null; 
+                            e.target.src = "/images/professores/default-avatar.jpg"
+                          }}
+                        />
+                      </div>
+                      <div className="info">
+                        <p><strong>{membro.funcao}</strong></p>
+                        <p>{membro.nome}</p>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -88,8 +109,21 @@ export default function Professores() {
                 <div className="docentes">
                   {dcom.docentes.map((docente, index) => (
                     <div key={index} className="docente">
-                      <ProfessorIcon />
-                      <p><strong>{docente.nome}</strong> - {docente.titulacao} - {docente.jornada}</p>
+                      <div className="avatar-container">
+                        <img 
+                          src={docente.imagem} 
+                          alt={docente.nome}
+                          className="avatar"
+                          onError={(e) => {
+                            e.target.onerror = null; 
+                            e.target.src = "/images/professores/default-avatar.jpg"
+                          }}
+                        />
+                      </div>
+                      <div className="info">
+                        <p><strong>{docente.nome}</strong></p>
+                        <p>{docente.titulacao} - {docente.jornada}</p>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -122,8 +156,8 @@ export default function Professores() {
         .equipe, .docentes {
           margin-top: 20px;
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-          gap: 20px;
+          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+          gap: 25px;
         }
 
         .membro-equipe, .docente {
@@ -133,27 +167,53 @@ export default function Professores() {
           display: flex;
           align-items: center;
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .membro-equipe svg, .docente svg {
-          width: 60px;
-          height: 60px;
+        .membro-equipe:hover, .docente:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .avatar-container {
+          width: 80px;
+          height: 80px;
           margin-right: 20px;
-          fill: #666;
+          flex-shrink: 0;
         }
 
-        .membro-equipe p, .docente p {
-          font-size: 1rem;
+        .avatar {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 3px solid #fff;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .info {
+          flex-grow: 1;
+        }
+
+        .info p {
+          margin: 5px 0;
           color: #555;
+          line-height: 1.4;
         }
 
-        .docente strong, .membro-equipe strong {
-          color: #333;
+        .info p:first-child {
+          font-size: 1.1rem;
         }
 
         hr.major {
           border-top: 2px solid #eee;
           margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+          .equipe, .docentes {
+            grid-template-columns: 1fr;
+          }
         }
       `}</style>
     </>
