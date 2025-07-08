@@ -1,8 +1,7 @@
-// pages/noticias.js
 import Noticias from '../components/Noticias';
 
 export async function getServerSideProps() {
-  const res = await fetch('https://www.ufsm.br/wp-json/wp/v2/eventos?per_page=4&_embed');
+  const res = await fetch('https://www.ufsm.br/wp-json/wp/v2/eventos?per_page=12&_embed');
   const rawEventos = await res.json();
 
   const eventos = rawEventos.map((evento) => ({
@@ -23,5 +22,20 @@ export async function getServerSideProps() {
 }
 
 export default function NoticiasPage({ eventos }) {
-  return <Noticias eventos={eventos} />;
+  return (
+    <main
+      style={{
+        maxWidth: '1100px',
+        margin: '40px auto',
+        padding: '0 20px',
+        fontFamily: 'Arial, sans-serif',
+        color: '#333',
+      }}
+    >
+      <h1 style={{ textAlign: 'center', marginBottom: '30px' }}>
+        Notícias e Eventos
+      </h1>
+      <Noticias eventos={eventos} />
+    </main>
+  );
 }

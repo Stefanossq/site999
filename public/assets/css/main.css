@@ -1879,7 +1879,7 @@ button,
       #main > .inner > section {
         padding: 3em 0 1em 0 ; } }
 
-/* Sidebar */
+ /* Sidebar */
 #search form {
   text-decoration: none;
   position: relative; }
@@ -1890,7 +1890,7 @@ button,
     font-style: normal;
     font-variant: normal;
     text-rendering: auto;
-    line-height: 1;
+    line-height:1;
     text-transform: none !important;
     font-family: 'Font Awesome 5 Free';
     font-weight: 900; }

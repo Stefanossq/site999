@@ -1,4 +1,4 @@
-import Link from 'next/link'; // 👈 Importa Link do Next.js
+import Link from 'next/link'; 
 
 export default function Header() {
   return (
