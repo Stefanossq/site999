@@ -1,4 +1,7 @@
+'use client'; // apenas se estiver usando a App Router, senão pode remover
+
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function Sidebar() {
   const [inactive, setInactive] = useState(false);
@@ -23,7 +26,7 @@ export default function Sidebar() {
         {/* Search */}
         <section id="search" className="alt">
           <form method="post" action="#">
-            <input type="text" name="query" id="query" placeholder="Search" />
+            <input type="text" name="query" id="query" placeholder="Pesquisar" />
           </form>
         </section>
 
@@ -33,89 +36,80 @@ export default function Sidebar() {
             <h2>Menu</h2>
           </header>
           <ul>
-            <li><a href="index.html">Homepage</a></li>
-            <li><a href="generic.html">Generic</a></li>
-            <li><a href="elements.html">Elements</a></li>
-
+            <li>
+              <Link href="/">Início</Link>
+            </li>
+            <li>
+              <Link href="/grade">Grade Curricular</Link>
+            </li>
+            <li>
+              <Link href="/professores">Corpo Docente</Link>
+            </li>
             <li className={openMenus[1] ? 'active' : ''}>
-              <span className="opener" onClick={() => toggleSubMenu(1)}>Submenu</span>
+              <span className="opener" onClick={() => toggleSubMenu(1)}>Recursos</span>
               <ul>
-                <li><a href="#">Lorem Dolor</a></li>
-                <li><a href="#">Ipsum Adipiscing</a></li>
-                <li><a href="#">Tempus Magna</a></li>
-                <li><a href="#">Feugiat Veroeros</a></li>
+                <li><Link href="/laboratorios">Laboratórios</Link></li>
+                <li><Link href="/biblioteca">Biblioteca</Link></li>
+                <li><Link href="/editais">Editais</Link></li>
               </ul>
             </li>
-
-            <li><a href="#">Etiam Dolore</a></li>
-            <li><a href="#">Adipiscing</a></li>
-
-            <li className={openMenus[2] ? 'active' : ''}>
-              <span className="opener" onClick={() => toggleSubMenu(2)}>Another Submenu</span>
-              <ul>
-                <li><a href="#">Lorem Dolor</a></li>
-                <li><a href="#">Ipsum Adipiscing</a></li>
-                <li><a href="#">Tempus Magna</a></li>
-                <li><a href="#">Feugiat Veroeros</a></li>
-              </ul>
+            <li>
+              <Link href="/estagios">Estágios</Link>
             </li>
-
-            <li><a href="#">Maximus Erat</a></li>
-            <li><a href="#">Sapien Mauris</a></li>
-            <li><a href="#">Amet Lacinia</a></li>
+            <li>
+              <Link href="/tcc">TCC</Link>
+            </li>
           </ul>
         </nav>
 
-        {/* Section with mini-posts */}
+        {/* Seções adicionais (opcional) */}
         <section>
           <header className="major">
-            <h2>Ante interdum</h2>
+            <h2>Ante Interdum</h2>
           </header>
           <div className="mini-posts">
             <article>
-              <a href="#" className="image"><img src="images/pic07.jpg" alt="" /></a>
-              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+              <Link href="#"><img src="/images/pic07.jpg" alt="" className="image" /></Link>
+              <p>Exemplo de texto complementar.</p>
             </article>
             <article>
-              <a href="#" className="image"><img src="images/pic08.jpg" alt="" /></a>
-              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+              <Link href="#"><img src="/images/pic08.jpg" alt="" className="image" /></Link>
+              <p>Outro exemplo de conteúdo lateral.</p>
             </article>
             <article>
-              <a href="#" className="image"><img src="images/pic09.jpg" alt="" /></a>
-              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+              <Link href="#"><img src="/images/pic09.jpg" alt="" className="image" /></Link>
+              <p>Você pode editar ou remover esta seção.</p>
             </article>
           </div>
           <ul className="actions">
-            <li><a href="#" className="button">More</a></li>
+            <li><Link href="#">Mais</Link></li>
           </ul>
         </section>
 
-        {/* Section Get in touch */}
         <section>
           <header className="major">
-            <h2>Get in touch</h2>
+            <h2>Fale Conosco</h2>
           </header>
-          <p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+          <p>Entre em contato com a coordenação para dúvidas e orientações.</p>
           <ul className="contact">
-            <li className="icon solid fa-envelope"><a href="mailto:information@untitled.tld">information@untitled.tld</a></li>
-            <li className="icon solid fa-phone">(000) 000-0000</li>
+            <li className="icon solid fa-envelope">
+              <a href="mailto:email@exemplo.com">email@exemplo.com</a>
+            </li>
+            <li className="icon solid fa-phone">(55) 0000-0000</li>
             <li className="icon solid fa-home">
-              1234 Somewhere Road #8254<br />
-              Nashville, TN 00000-0000
+              Universidade Federal<br />
+              Santa Maria - RS
             </li>
           </ul>
         </section>
 
-        {/* Footer */}
         <footer id="footer">
           <p className="copyright">
-            &copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.
+            &copy; Curso de Sistemas. Todos os direitos reservados.
           </p>
         </footer>
-
       </div>
 
-      {/* Toggle Sidebar Button */}
       <a href="#" className="toggle" onClick={toggleSidebar} aria-label="Toggle Sidebar">&#9776;</a>
     </div>
   );
