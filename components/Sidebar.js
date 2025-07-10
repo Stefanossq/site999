@@ -1,7 +1,8 @@
-'use client'; // apenas se estiver usando a App Router, senão pode remover
+'use client';
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Sidebar() {
   const [inactive, setInactive] = useState(false);
@@ -62,30 +63,49 @@ export default function Sidebar() {
           </ul>
         </nav>
 
-        {/* Seções adicionais (opcional) */}
+        
         <section>
           <header className="major">
-            <h2>Ante Interdum</h2>
+            <h2>Destaques</h2>
           </header>
           <div className="mini-posts">
             <article>
-              <Link href="#"><img src="/images/pic07.jpg" alt="" className="image" /></Link>
-              <p>Exemplo de texto complementar.</p>
+              <Link href="#" passHref>
+                <div className="image-wrapper">
+                  <Image
+                    src="/images/JICOMP.webp"
+                    alt="Evento JICOMP"
+                    width={300}
+                    height={200}
+                    className="image"
+                    quality={80}
+                  />
+                </div>
+              </Link>
+              <p>Confira os destaques do JICOMP deste ano.</p>
             </article>
             <article>
-              <Link href="#"><img src="/images/pic08.jpg" alt="" className="image" /></Link>
-              <p>Outro exemplo de conteúdo lateral.</p>
-            </article>
-            <article>
-              <Link href="#"><img src="/images/pic09.jpg" alt="" className="image" /></Link>
-              <p>Você pode editar ou remover esta seção.</p>
+              <Link href="#" passHref>
+                <div className="image-wrapper">
+                  <Image
+                    src="/images/NEXT.webp"
+                    alt="Evento NEXT"
+                    width={300}
+                    height={200}
+                    className="image"
+                    quality={80}
+                  />
+                </div>
+              </Link>
+              <p>Próximos eventos e novidades da área de tecnologia.</p>
             </article>
           </div>
           <ul className="actions">
-            <li><Link href="#">Mais</Link></li>
+            <li><Link href="#" className="button">Ver todos os eventos</Link></li>
           </ul>
         </section>
 
+        {/* Seção de Contato */}
         <section>
           <header className="major">
             <h2>Fale Conosco</h2>
@@ -93,9 +113,9 @@ export default function Sidebar() {
           <p>Entre em contato com a coordenação para dúvidas e orientações.</p>
           <ul className="contact">
             <li className="icon solid fa-envelope">
-              <a href="mailto:email@exemplo.com">email@exemplo.com</a>
+              <a href="mailto:email@exemplo.com">coord-bsi@inf.ufsm.br</a>
             </li>
-            <li className="icon solid fa-phone">(55) 0000-0000</li>
+            <li className="icon solid fa-phone">(55) 3220.9636</li>
             <li className="icon solid fa-home">
               Universidade Federal<br />
               Santa Maria - RS

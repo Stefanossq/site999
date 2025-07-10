@@ -27,6 +27,7 @@ export default function Banner() {
         <img
           src="/images/brasaoUFSM.svg"
           alt="Brasão da UFSM"
+          loading="lazy"
         />
       </div>
 
@@ -37,16 +38,19 @@ export default function Banner() {
           align-items: center;
           justify-content: space-between;
           gap: 2rem;
-          padding: 2rem;
+          padding: 3rem 1.5rem;
+          background-color: #f9f9f9;
         }
 
         .banner-content {
           flex: 1 1 300px;
+          min-width: 250px;
         }
 
         .banner-image {
-          flex: 1 1 200px;
-          max-width: 300px;
+          flex: 1 1 300px;
+          max-width: 320px;
+          min-width: 200px;
           margin: 0 auto;
         }
 
@@ -58,9 +62,6 @@ export default function Banner() {
           animation: fadeIn 1s ease-in-out;
         }
 
-   
-
-    
         @keyframes fadeIn {
           from {
             opacity: 0;
@@ -79,7 +80,12 @@ export default function Banner() {
           }
 
           .banner-image {
-            max-width: 200px;
+            max-width: 220px;
+            margin-top: 1rem;
+          }
+
+          .banner-content h1 {
+            font-size: 1.8rem;
           }
         }
 
